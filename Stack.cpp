@@ -67,7 +67,10 @@ T& Stack<T>::top() const {
 //Destroys element at the top
 template <class T>
 void Stack<T>::pop() {
-    //need to be able to handle when the stack is empty look into try catch and throw. Used them quite a bit with that one class
+    if (empty()) {
+        return;
+    }
+    
     T* temp_array = new T[capacity_];
 
     //Copying everything except what was on top of the stack 
