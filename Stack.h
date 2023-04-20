@@ -1,7 +1,6 @@
 /*****************************************************************************
 *    Brian Chairez                                                           *
 *    Goal: Manual implementation of std::Stack using dynamic arrays pointers *
-*    Progess: Basic implementation and functions are complete                *
 *****************************************************************************/
 
 #ifndef STACK_H
