@@ -4,11 +4,13 @@
 /*****************************************************************************
     Constructors/ Destructor
 *****************************************************************************/
+// Time Complexity: O(N), where N in this case is equal to 1.
 template <class T>
 Stack<T>::Stack() : size_(0), capacity_(1), array_(nullptr) {
     array_ = new T[capacity_];
 }
 
+// Time Complexity: O(N), where N is the number specified by capacity.
 template <class T>
 Stack<T>::Stack(const int& capacity) : size_(0), capacity_(capacity), array_(nullptr) {
     if (capacity_ <= 0) {
@@ -18,6 +20,7 @@ Stack<T>::Stack(const int& capacity) : size_(0), capacity_(capacity), array_(nul
     array_ = new T[capacity_];
 }
 
+// Time Complexity: O(N), where N is the number of elements in other.
 template <class T>
 Stack<T>::Stack(Stack<T>& other) : size_(other.size_), capacity_(other.capacity_), array_(nullptr) {
     array_ = new T[capacity_];
@@ -26,6 +29,7 @@ Stack<T>::Stack(Stack<T>& other) : size_(other.size_), capacity_(other.capacity_
 }
 
 
+// Time Complexity: O(1)
 template <class T>
 Stack<T>::~Stack() {
     memoryManage(array_);
@@ -36,6 +40,7 @@ Stack<T>::~Stack() {
 /*****************************************************************************
     Operator Overload
 *****************************************************************************/
+// Time Complexity: O(N), where N is the number of elements in other.
 template <class T>
 T& Stack<T>::operator=(const Stack<T>& other) {
     size_ = other.size_;
@@ -46,8 +51,9 @@ T& Stack<T>::operator=(const Stack<T>& other) {
 }
 
 /*****************************************************************************
-    Data Modification/ Manipulation
+    Data Modification
 *****************************************************************************/
+// Time Complexity: O(1) amortized. O(N) until the stack is big enough to not need a resize as often.
 template <class T>
 void Stack<T>::push(const T& data) {
     if (size_ >= capacity_) {
@@ -59,12 +65,14 @@ void Stack<T>::push(const T& data) {
 }
 
 //Returns top most element. DO NOT USE WHEN STACK IS EMPTY
+// Time Complexity: O(1)
 template <class T>
 T& Stack<T>::top() const {
     return array_[size_ - 1];
 }
 
 //Destroys element at the top
+// Time Complexity: O(N), where N is the number of elements in the stack.
 template <class T>
 void Stack<T>::pop() {
     if (empty()) {
@@ -86,6 +94,7 @@ void Stack<T>::pop() {
 /*****************************************************************************
     Data Observation
 *****************************************************************************/
+// Time Complexity: O(N), where N is the number of elements in the stack.
 template <class T>
 bool Stack<T>::contains(const T& data) const {
     for (int i = 0; i < size_; ++i) {
@@ -97,16 +106,19 @@ bool Stack<T>::contains(const T& data) const {
     return false;
 }
 
+// Time Complexity: O(1)
 template <class T>
 bool Stack<T>::empty() const {
     return size_ == 0;
 }
 
+// Time Complexity: O(1)
 template <class T>
 int Stack<T>::capacity() const {
     return capacity_;
 }
 
+// Time Complexity: O(1)
 template <class T>
 int Stack<T>::size() const {
     return size_;
@@ -115,6 +127,7 @@ int Stack<T>::size() const {
 /*****************************************************************************
     Private Functions
 *****************************************************************************/
+// Time Complexity: O(N), where N is the number of elements in the stack.
 template <class T>
 void Stack<T>::resize_() {
     capacity_ *= 2;
